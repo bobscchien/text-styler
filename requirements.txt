@@ -1,0 +1,6 @@
+tensorflow-text==2.7
+tf-models-official==2.7
+transformers
+datasets
+swifter
+opencc-python-reimplemented
