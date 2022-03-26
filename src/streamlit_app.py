@@ -88,31 +88,28 @@ def model_inference(pipeline, input_text):
 
     return target_text, target_tokens, attention_weights
 
-#@st.cache()
-#def attention_plotter(bert_name, user_input, target_tokens, attention_weights, layer, head):
-#
-#    cache_dir = os.path.join(pretrain_dir, bert_name)
-#    
-#    tokenizers = tf.Module()
-#    tokenizers.inp = HFSelectTokenizer(bert_name).from_pretrained(bert_name, 
-#                                                                  cache_dir=cache_dir, 
-#                                                                  do_lower_case=True)
-#
-#    fig = plot_attention_weights(user_input, target_tokens, attention_weights, tokenizers, layer, head, show=False)
-#    return fig
-
 ### setup information
 
 st.title("Text Style Transfer")
-st.subheader('Traditional Chinese ⇨ Classical Chinese')
+st.subheader('')
+
+col_left, col_right = st.columns([1, 1])
+
+text = (
+    'This project structures an end-to-end Transformer model using [**Hugging Face**](https://huggingface.co/) & [**Tensorflow**](https://www.tensorflow.org/?hl=zh-tw), '
+    'which is composed of the pretrained bert tokenizer & encoder and the [customized tokenizer](https://github.com/bobscchien/text-tokenizer) & decoder, '
+    'to get a text styler. '
+    '[_**Source Code**_](https://github.com/bobscchien/text-styler)'
+)
+col_left.markdown(text)
+
+st.write('')
+st.subheader('**Traditional Chinese ⇨ Classical Chinese**')
 
 # load model
 pipeline, bert_name = build_model_pipeline(config, text_preprocessors)
 
 # user input
-st.write('')
-
-### output input results
 
 text_sample = {}
 text_sample[1] = (
